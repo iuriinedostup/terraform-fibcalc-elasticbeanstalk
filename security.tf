@@ -10,10 +10,10 @@ resource "aws_security_group" "complex_sg" {
   }
 
   ingress {
-    from_port = 80
-    protocol = "TCP"
-    to_port = 80
-    cidr_blocks      = ["0.0.0.0/0"]
+    from_port   = 80
+    protocol    = "TCP"
+    to_port     = 80
+    cidr_blocks = ["0.0.0.0/0"]
   }
   vpc_id = var.vpc_id
   tags = merge(var.default_tags, {
@@ -24,9 +24,9 @@ resource "aws_security_group" "complex_sg" {
 resource "aws_security_group" "complex_rds" {
   name = "complex-rds-sg"
   ingress {
-    from_port = 5432
-    protocol = "TCP"
-    to_port = 5432
+    from_port       = 5432
+    protocol        = "TCP"
+    to_port         = 5432
     security_groups = [aws_security_group.complex_sg.id]
   }
   vpc_id = var.vpc_id
@@ -38,9 +38,9 @@ resource "aws_security_group" "complex_rds" {
 resource "aws_security_group" "complex_redis" {
   name = "complex-redis-sg"
   ingress {
-    from_port = 6379
-    protocol = "TCP"
-    to_port = 6379
+    from_port       = 6379
+    protocol        = "TCP"
+    to_port         = 6379
     security_groups = [aws_security_group.complex_sg.id]
   }
   vpc_id = var.vpc_id
